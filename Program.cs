@@ -16,16 +16,13 @@ namespace RoushTech.Microsoft.Dynamics.Import.UI
         public static List<Type> ImportTypes { get; set; }
 
         public static DataTable ImportDataTable { get; set; }
-
-        public static ConfigFile Config { get; set; }
-
+        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         public static void Main()
         {
-            Config = new ConfigFile().Load();
             LoadTypes();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

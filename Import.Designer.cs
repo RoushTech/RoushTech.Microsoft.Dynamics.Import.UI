@@ -34,15 +34,21 @@
             this.TrialButton = new System.Windows.Forms.Button();
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.ToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.MappingsButton = new System.Windows.Forms.Button();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.CSVDataPage = new System.Windows.Forms.TabPage();
-            this.TrialPage = new System.Windows.Forms.TabPage();
             this.DataGridView = new System.Windows.Forms.DataGridView();
+            this.TrialPage = new System.Windows.Forms.TabPage();
+            this.TrialResultsGridView = new System.Windows.Forms.DataGridView();
+            this.Table = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Object = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StatusStrip.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.CSVDataPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
+            this.TrialPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TrialResultsGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // OpenFileDialog
@@ -95,16 +101,6 @@
             this.ToolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.ToolStripStatusLabel.Text = "Status";
             // 
-            // MappingsButton
-            // 
-            this.MappingsButton.Location = new System.Drawing.Point(93, 12);
-            this.MappingsButton.Name = "MappingsButton";
-            this.MappingsButton.Size = new System.Drawing.Size(75, 23);
-            this.MappingsButton.TabIndex = 5;
-            this.MappingsButton.Text = "Mappings";
-            this.MappingsButton.UseVisualStyleBackColor = true;
-            this.MappingsButton.Click += new System.EventHandler(this.MappingsButton_Click);
-            // 
             // TabControl
             // 
             this.TabControl.Controls.Add(this.CSVDataPage);
@@ -126,16 +122,6 @@
             this.CSVDataPage.Text = "CSV Data";
             this.CSVDataPage.UseVisualStyleBackColor = true;
             // 
-            // TrialPage
-            // 
-            this.TrialPage.Location = new System.Drawing.Point(4, 22);
-            this.TrialPage.Name = "TrialPage";
-            this.TrialPage.Padding = new System.Windows.Forms.Padding(3);
-            this.TrialPage.Size = new System.Drawing.Size(908, 381);
-            this.TrialPage.TabIndex = 1;
-            this.TrialPage.Text = "Trial Results";
-            this.TrialPage.UseVisualStyleBackColor = true;
-            // 
             // DataGridView
             // 
             this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -144,13 +130,61 @@
             this.DataGridView.Size = new System.Drawing.Size(896, 369);
             this.DataGridView.TabIndex = 5;
             // 
+            // TrialPage
+            // 
+            this.TrialPage.Controls.Add(this.TrialResultsGridView);
+            this.TrialPage.Location = new System.Drawing.Point(4, 22);
+            this.TrialPage.Name = "TrialPage";
+            this.TrialPage.Padding = new System.Windows.Forms.Padding(3);
+            this.TrialPage.Size = new System.Drawing.Size(908, 381);
+            this.TrialPage.TabIndex = 1;
+            this.TrialPage.Text = "Trial Results";
+            this.TrialPage.UseVisualStyleBackColor = true;
+            // 
+            // TrialResultsGridView
+            // 
+            this.TrialResultsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TrialResultsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Table,
+            this.Object,
+            this.Key,
+            this.Action});
+            this.TrialResultsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TrialResultsGridView.Location = new System.Drawing.Point(3, 3);
+            this.TrialResultsGridView.Name = "TrialResultsGridView";
+            this.TrialResultsGridView.Size = new System.Drawing.Size(902, 375);
+            this.TrialResultsGridView.TabIndex = 0;
+            // 
+            // Table
+            // 
+            this.Table.HeaderText = "Table";
+            this.Table.Name = "Table";
+            this.Table.ReadOnly = true;
+            // 
+            // Object
+            // 
+            this.Object.HeaderText = "Object";
+            this.Object.Name = "Object";
+            this.Object.ReadOnly = true;
+            // 
+            // Key
+            // 
+            this.Key.HeaderText = "Key";
+            this.Key.Name = "Key";
+            this.Key.ReadOnly = true;
+            // 
+            // Action
+            // 
+            this.Action.HeaderText = "Action";
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            // 
             // Import
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(940, 502);
             this.Controls.Add(this.TabControl);
-            this.Controls.Add(this.MappingsButton);
             this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.TrialButton);
             this.Controls.Add(this.ExecuteButton);
@@ -163,6 +197,8 @@
             this.TabControl.ResumeLayout(false);
             this.CSVDataPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
+            this.TrialPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TrialResultsGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,10 +212,14 @@
         private System.Windows.Forms.Button TrialButton;
         private System.Windows.Forms.StatusStrip StatusStrip;
         private System.Windows.Forms.ToolStripStatusLabel ToolStripStatusLabel;
-        private System.Windows.Forms.Button MappingsButton;
         private System.Windows.Forms.TabControl TabControl;
         private System.Windows.Forms.TabPage CSVDataPage;
         private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.TabPage TrialPage;
+        private System.Windows.Forms.DataGridView TrialResultsGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Table;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Object;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Key;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Action;
     }
 }

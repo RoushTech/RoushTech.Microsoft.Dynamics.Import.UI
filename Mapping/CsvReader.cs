@@ -1,4 +1,4 @@
-﻿namespace RoushTech.Microsoft.Dynamics.Import.UI
+﻿namespace RoushTech.Microsoft.Dynamics.Import.UI.Mapping
 {
     using System;
     using System.Data;
@@ -7,7 +7,7 @@
     using System.IO;
     using System.Windows.Forms;
 
-    class CsvReader
+    public class CsvReader
     {
         public static DataTable Read(string path)
         {
@@ -23,6 +23,16 @@
                 using (var adapter = new OleDbDataAdapter(command))
                 {
                     var dataTable = new DataTable { Locale = CultureInfo.CurrentCulture };
+
+                    // Stop automatically detecting my types! I want strings so I can handle types!
+                    // EX: "Item Number" looks like an int and will be converted as one, but Dynamics stores it as a string, grr!
+                    var tempDataTable = new DataTable();
+                    adapter.Fill(tempDataTable);
+                    foreach (DataColumn col in tempDataTable.Columns)
+                    {
+                        dataTable.Columns.Add(new DataColumn(col.ColumnName, typeof(string)));
+                    }
+
                     adapter.Fill(dataTable);
                     return dataTable;
                 }

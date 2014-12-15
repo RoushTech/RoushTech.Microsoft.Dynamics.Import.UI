@@ -52,28 +52,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\ConfigFile.cs" />
-    <Compile Include="Config\MapperConfig.cs" />
-    <Compile Include="CsvReader.cs" />
+    <Compile Include="Config\IMapperColumn.cs" />
+    <Compile Include="Config\IMapperTable.cs" />
+    <Compile Include="Config\MapperColumn.cs" />
+    <Compile Include="Config\MapperTable.cs" />
+    <Compile Include="Mapping\CsvReader.cs" />
     <Compile Include="Import.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Import.Designer.cs">
       <DependentUpon>Import.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mapping.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Mapping.Designer.cs">
-      <DependentUpon>Mapping.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Mapping\DataMapper.cs" />
+    <Compile Include="Mapping\StaticMapping.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Import.resx">
       <DependentUpon>Import.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mapping.resx">
-      <DependentUpon>Mapping.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
