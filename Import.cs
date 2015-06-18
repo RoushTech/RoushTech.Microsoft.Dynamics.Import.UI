@@ -3,7 +3,6 @@
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
     using System.Data.Entity.Validation;
     using System.Linq;
     using System.Reflection;
@@ -59,11 +58,7 @@
                         if (lookupResult == null)
                         {
                             inserts++;
-                            action = "Insert";
-                            if (commit)
-                            {
-                                databaseTableSet.Add(mappedData);
-                            }
+                            action = "Insert (skipped)";
                         }
                         else
                         {
@@ -197,7 +192,7 @@
             int skipped;
             this.DatabaseUpdate(true, out updates, out inserts, out skipped);
 
-            this.ToolStripStatusLabel.Text = string.Format("Update completed, {0} updates, {1} inserts, {2} skipped.", updates, inserts, skipped);
+            this.ToolStripStatusLabel.Text = string.Format("Update completed, {0} updates, {1} inserts (skipped), {2} skipped.", updates, inserts, skipped);
         }
 
         private void Import_Load(object sender, EventArgs e)
@@ -213,7 +208,7 @@
             int skipped;
             this.DatabaseUpdate(false, out updates, out inserts, out skipped);
 
-            this.ToolStripStatusLabel.Text = string.Format("Trial completed, {0} updates, {1} inserts, {2} skipped.", updates, inserts, skipped);
+            this.ToolStripStatusLabel.Text = string.Format("Trial completed, {0} updates, {1} inserts (skipped), {2} skipped.", updates, inserts, skipped);
         }
         // ReSharper restore InconsistentNaming
     }
